@@ -23,8 +23,6 @@ function LoggedInSidebar({ setisExclusive }) {
     }
   }, []);
   
-  console.log( process.env );
-
   let loginButtons = [];
 
   if( ! JSON.parse(localStorage.getItem("@token") )?.userdata ) {
@@ -63,8 +61,8 @@ function LoggedInSidebar({ setisExclusive }) {
       lineHeight: '14px'
     }}>
       <li key={1}>Get event details for FREE.</li>
-      <li key={1}>Unlimited clicks on events</li>
-      <li key={1}>Get hired through speakerOre
+      <li key={2}>Unlimited clicks on events</li>
+      <li key={3}>Get hired through speakerOre
       exclusive events </li>
     </ul> );
     
