@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Addeventpage from "./components/Events/Addeventpage";
 import Navbar from "./components/Header/Navbar";
 import Firstpage from "./components/Home/Firstpage";
@@ -27,8 +27,10 @@ import Privacy from "./components/Terms/privacy";
 import PurchaseError from "./ErrorPages/purchaseError";
 import SigneEeror from "./ErrorPages/SignIn";
 import EventMod from "./components/Events/EventMod";
-
 import Auth from './components/Auth';
+import Exclusiveevent from "./components/Terms/Exclusiveevent";
+import Test from "./components/Test";
+import Exevent from "./components/Events/Exevents";
 
 function PrivateRoute({ component: Component, ...rest }) {
   let auth = JSON.parse(localStorage.getItem("@token"))?.token;
@@ -37,14 +39,12 @@ function PrivateRoute({ component: Component, ...rest }) {
   }
   return <Navigate to="/login" />;
 }
-
 const App = () => {
-
-  const auth = JSON.parse(localStorage.getItem("@token"))?.token;
+  let auth = JSON.parse(localStorage.getItem("@token"))?.token;
   return (
     <>
-      <Router>
-        <Navbar />
+    <Navbar />
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Firstpage />} />
           <Route path="/about" element={<About2 />} />
@@ -53,16 +53,16 @@ const App = () => {
             path="/addevent"
             element={<PrivateRoute component={Addeventpage} />}
           />
-          <Route exact
-            path="/events"
-            element={auth ? <Eventpage /> : <EventError />}
-          />
           <Route
+            path="/events"
+            element={  auth ? <Eventpage /> : <EventError /> }
+          />
+           <Route
             path="/mod-event"
             element={<PrivateRoute component={EventMod} />}
           />
-          <Route path="/404" element={<PurchaseError />} />
-          <Route path="/500" element={<SigneEeror />} />
+          <Route path="/404" element={<PurchaseError />}/>
+          <Route path="/500" element={<SigneEeror />}/>
           <Route
             path="/moderator"
             element={<PrivateRoute component={ModeratorProfile} />}
@@ -89,7 +89,7 @@ const App = () => {
           <Route path="/login" element={<SignInUp />} />
           <Route
             path="/subplan"
-            element={<SubPlan />}
+            element={ <SubPlan/> }
           />
           <Route path="/mod-dummy1" element={<ModeratorDummy1 />} />
           <Route path="/mod-dummy2" element={<ModeratorDummy2 />} />
@@ -97,9 +97,12 @@ const App = () => {
           <Route path="/mod-dummy4" element={<ModeratorDummy4 />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
-          <Route path="/authorize" element={<Auth />} />
+          <Route path="/authorize" element={<Auth /> } />
+          <Route  path="/test" element={<Test user="durgesh" />} />
+          <Route path="/exclusiveevent" element={<Exclusiveevent />} />
+          <Route path="/exevent" element={<Exevent />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
       <Footer />
     </>
   );
