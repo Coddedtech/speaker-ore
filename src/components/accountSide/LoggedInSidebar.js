@@ -117,15 +117,10 @@ function LoggedInSidebar({ setisExclusive }) {
 
         {userData?.role ?<span className="eprtext1">{ userData?.role } </span> : ""}
 
-        {JSON.parse(localStorage.getItem("@token"))?.userdata &&
-        JSON.parse(localStorage.getItem("@token"))?.userdata?.role !==
-          "USER" ? (
           <div style={{ marginTop: "3rem" }} className="eprbtn2">
             <a href="/addevent">Create a new event</a>
           </div>
-        ) : (
-          ""
-        )}
+
         {/* Sign In/Sign Up Buttons */}
         { loginButtons }
 
