@@ -1,9 +1,8 @@
 import { Button } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import withRouter from "../withRouter";
 import "../css/About2.css";
-function LoggedInSidebar({ setisExclusive }) {
+export default function LoggedInSidebar({ setisExclusive }) {
   const [userData, setUser] = useState("");
   const isLoggedin = JSON.parse(localStorage.getItem("@token"))?.userdata;
   useEffect(() => {
@@ -117,7 +116,7 @@ function LoggedInSidebar({ setisExclusive }) {
 
         {userData?.role ?<span className="eprtext1">{ userData?.role } </span> : ""}
 
-        {JSON.parse(localStorage.getItem("@token"))?.userdata &&
+       { /* {JSON.parse(localStorage.getItem("@token"))?.userdata &&
         JSON.parse(localStorage.getItem("@token"))?.userdata?.role !==
           "USER" ? (
           <div style={{ marginTop: "3rem" }} className="eprbtn2">
@@ -125,12 +124,18 @@ function LoggedInSidebar({ setisExclusive }) {
           </div>
         ) : (
           ""
-        )}
+        )}}
         {/* Sign In/Sign Up Buttons */}
         { loginButtons }
 
         {JSON.parse(localStorage.getItem("@token"))?.userdata && (
-          <a href="/single-event-ex">
+          <a href="/addevent">
+            <div className="eprbtn2">Create a new event</div>
+          </a>
+        )}
+
+        {JSON.parse(localStorage.getItem("@token"))?.userdata && (
+          <a href="/exevent">
             <div className="eprbtn2">SpeakerOre exclusive Events</div>
           </a>
         )}
@@ -160,7 +165,3 @@ function LoggedInSidebar({ setisExclusive }) {
     </div>
   );
 }
-
-
-
-export default withRouter( LoggedInSidebar )
