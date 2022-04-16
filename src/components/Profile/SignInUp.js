@@ -15,7 +15,6 @@ const SignInUp = () => {
   const [message, setMessage] = useState("");
   // const [provider, setProvider] = useState()
   const navigate = useNavigate();
-
   // Google Response 
   const googleSuccessResponse = (response) => {
     console.log(process.env);
@@ -45,10 +44,10 @@ const SignInUp = () => {
           console.log("Success", data?.data);
           localStorage.setItem("@token", JSON.stringify(data?.data));
           if (data?.data?.userdata?.role == "MODERATOR") {
-            navigate.to("/myprofile");
+            navigate("/myprofile", { replace: true });
           }
           // if (data?.data?.isSubscribed) {
-          navigate.to("/events");
+          navigate("/events", { replace: true });
           // } 
         })
         .catch((err) => {
