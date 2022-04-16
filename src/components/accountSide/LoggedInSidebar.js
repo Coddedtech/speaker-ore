@@ -22,6 +22,8 @@ function LoggedInSidebar({ setisExclusive }) {
         });
     }
   }, []);
+  
+  console.log( process.env );
 
   let loginButtons = [];
 
