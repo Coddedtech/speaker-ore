@@ -62,9 +62,9 @@ function LoggedInSidebar({ setisExclusive }) {
       textAlign: 'left',
       lineHeight: '14px'
     }}>
-      <li>Get event details for FREE.</li>
-      <li>Unlimited clicks on events</li>
-      <li>Get hired through speakerOre
+      <li key={1}>Get event details for FREE.</li>
+      <li key={1}>Unlimited clicks on events</li>
+      <li key={1}>Get hired through speakerOre
       exclusive events </li>
     </ul> );
     
