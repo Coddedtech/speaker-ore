@@ -29,7 +29,7 @@ import SigneEeror from "./ErrorPages/SignIn";
 import EventMod from "./components/Events/EventMod";
 import Auth from './components/Auth';
 import Exclusiveevent from "./components/Terms/Exclusiveevent";
-import Test from "./components/Test";
+// import Test from "./components/Test";
 import Exevent from "./components/Events/Exevents";
 
 function PrivateRoute({ component: Component, ...rest }) {
@@ -98,7 +98,6 @@ const App = () => {
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/authorize" element={<Auth /> } />
-          <Route  path="/test" element={<Test user="durgesh" />} />
           <Route path="/exclusiveevent" element={<Exclusiveevent />} />
           <Route path="/exevent" element={<Exevent />} />
         </Routes>
