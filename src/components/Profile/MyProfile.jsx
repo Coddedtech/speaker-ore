@@ -8,12 +8,13 @@ import { useState } from "react";
 import AccountSide from "../accountSide";
 export default function MyProfile() {
   const [userData, setUser] = useState("");
-  const planId = localStorage.getItem("@planId")
+  const planId = localStorage.getItem("@planId");
+  const loggedInData = JSON.parse(localStorage.getItem("@token"))?.userdata?.id;
+  console.log('processENV:', process.env );
   useEffect(() => {
     axios
       .get(
-        `${process.env.REACT_APP_URL}/auth/get-loogedin/${JSON.parse(localStorage.getItem("@token"))?.userdata?.id
-        }`
+        `${process.env.REACT_APP_URL}/auth/get-loogedin/`
       )
       .then((data) => {
         console.log('userdata:', data?.data);
